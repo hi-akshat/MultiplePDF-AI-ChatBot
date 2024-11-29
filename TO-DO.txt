@@ -1,0 +1,11 @@
+- increase chunk tize acceptable  
+
+- fix light / dark toggle  
+
+- what are the accuracy and benchamrks 
+
+- toggle between openAI and hugging-face embeddings 
+
+- include user flow map on the website 
+
+- deploy
