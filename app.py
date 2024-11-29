@@ -1,3 +1,4 @@
+#test comment for git functionality
 import streamlit as st
 from config import Config
 from components.chat_logic import ChatManager
