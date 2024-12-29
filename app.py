@@ -10,9 +10,23 @@ def load_css(file_path):
     with open(file_path, "r") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+def reset_session():
+    """Reset all session variables and clear the chat history."""
+    st.session_state.processed_files = []
+    st.session_state.messages = []
+    st.session_state.suggested_questions = []
+    if "chat_manager" in st.session_state:
+        del st.session_state["chat_manager"]
+    if "vectorstore" in st.session_state:
+        del st.session_state["vectorstore"]
+
 def main():
     # Set up the page configuration
     st.set_page_config(page_title=Config.APP_TITLE, page_icon="📄", layout="wide")
+
+    # Initialize session state for processed files
+    if "processed_files" not in st.session_state:
+        st.session_state.processed_files = []
 
     # Load styles dynamically
     load_css("styles/main.css")
@@ -27,11 +41,6 @@ def main():
         type=Config.SUPPORTED_FILE_TYPES,
         accept_multiple_files=True,
     )
-
-    # Knowledge Base Section
-    st.sidebar.header("🗂️ Knowledge Base")
-    if "processed_files" not in st.session_state:
-        st.session_state.processed_files = []
 
     # Display list of processed documents
     if st.session_state.processed_files:
@@ -138,7 +147,7 @@ def main():
                 # Stream the response character by character
                 for i in range(1, len(full_response) + 1):
                     response_placeholder.markdown(full_response[:i] + "▌")
-                    time.sleep(0.02)  # Adjust the speed of typing
+                    time.sleep(0.01)  # Adjust the speed of typing
                 
                 # Final display of the complete response
                 response_placeholder.markdown(full_response)
@@ -156,6 +165,11 @@ def main():
         st.session_state.messages = []
         st.session_state.suggested_questions = []
         st.session_state.processed_files = []
+        st.rerun()
+
+    if st.sidebar.button("Reset Session", type="primary"):
+        reset_session()
+        st.sidebar.success("Session reset successfully!")
         st.rerun()
 
 
