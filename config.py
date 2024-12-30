@@ -11,7 +11,7 @@ class Config:
     OPENAI_MODEL = "gpt-3.5-turbo"
 
     # App Settings
-    APP_TITLE = "💡 Intelligent PDF Co-Pilot"
+    APP_TITLE = "💡Intelligent PDF Co-Pilot"
     MAX_FILE_SIZE = 200  # MB
     SUPPORTED_FILE_TYPES = ["pdf"]
 

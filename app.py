@@ -22,7 +22,7 @@ def reset_session():
 
 def main():
     # Set up the page configuration
-    st.set_page_config(page_title=Config.APP_TITLE, page_icon="📄", layout="wide")
+    st.set_page_config(page_title=Config.APP_TITLE, layout="wide")
 
     # Initialize session state for processed files
     if "processed_files" not in st.session_state:
