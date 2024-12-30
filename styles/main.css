@@ -234,3 +234,51 @@ body {
     color: white !important;
     border-color: #10a37f !important;
 }
+
+/* Updated footer styles matching the app's color scheme */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(38,39,48,255);  /* Using the main green color */
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    box-shadow: 0 -2px 4px var(--shadow-color);
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--user-text-color);  /* Using white text color */
+    font-weight: 400;
+}
+
+.footer a {
+    color: var(--user-text-color);  /* White color for link */
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    opacity: 0.9;
+}
+
+.footer a:hover {
+    color: var(--user-text-color);
+    text-decoration: underline;
+    opacity: 1;
+}
+
+/* Ensure proper spacing for content above footer */
+.chat-container {
+    margin-bottom: 50px;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+    .footer {
+        padding: 8px;
+        font-size: 12px;
+    }
+}

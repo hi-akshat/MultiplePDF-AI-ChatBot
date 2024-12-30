@@ -20,6 +20,24 @@ def reset_session():
     if "vectorstore" in st.session_state:
         del st.session_state["vectorstore"]
 
+def add_footer():
+    """Add a footer with creator attribution and LinkedIn link."""
+    footer_html = """
+    <div class="footer">
+        <p>Created by 
+                Akshat Gupta with ❤️ @UC Berkeley | 
+            <a href="https://www.linkedin.com/in/iamakshat/" target="_blank">
+                LinkedIn
+            </a>
+            |
+            <a href="mailto:akshat.g@berkeley.edu">
+                Email
+            </a>
+        </p>
+    </div>
+    """
+    st.markdown(footer_html, unsafe_allow_html=True)
+
 def main():
     # Set up the page configuration
     st.set_page_config(page_title=Config.APP_TITLE, layout="wide")
@@ -171,6 +189,8 @@ def main():
         reset_session()
         st.sidebar.success("Session reset successfully!")
         st.rerun()
+
+    add_footer()
 
 
 if __name__ == "__main__":
